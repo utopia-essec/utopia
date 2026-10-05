@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="#F2F3F5">
+  <title>Utopia — four moons and a star</title>
+  <defs>
+    <!-- One continuous crescent, repeated at exact quarter turns. -->
+    <path id="moon" d="M9.2 3.6 C14.3 3.6 23.2 7.4 28.2 15.2 C29.3 11.8 29.6 7.1 28.5 4.5 C28.1 2.6 27.2 1.7 25.3 1.2 C19.8 -0.4 13.8 0.8 9.2 3.6 Z"/>
+  </defs>
+  <use href="#moon"/>
+  <use href="#moon" transform="rotate(90 20 20)"/>
+  <use href="#moon" transform="rotate(180 20 20)"/>
+  <use href="#moon" transform="rotate(270 20 20)"/>
+  <!-- Four smooth concave sides, with deliberate pointed tips. -->
+  <path d="M20 13.2 C21.8 18.3 21.7 18.2 26.8 20 C21.7 21.8 21.8 21.7 20 26.8 C18.2 21.7 18.3 21.8 13.2 20 C18.3 18.2 18.2 18.3 20 13.2 Z"/>
+</svg>

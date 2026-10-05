@@ -1,0 +1,321 @@
+/* Supporting visual language: quiet raster fields, square geometry, factual copy. */
+:root {
+  --technical-font: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.pixel-field {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--accent);
+  pointer-events: none;
+}
+.names-strip {
+  background: #0b0d10;
+  border-top: 1px solid var(--line);
+  padding-block: 36px;
+}
+.names-strip > div > span {
+  color: #9da3ae;
+}
+.logo-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(24px, 4vw, 70px);
+}
+.company-logo {
+  height: 48px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.company-logo__art {
+  display: block;
+  width: 100%;
+  height: 48px;
+  object-fit: contain;
+  opacity: 0.86;
+}
+.section {
+  padding-block: 100px;
+}
+.section-heading h2 {
+  margin-top: 0;
+}
+.section-heading > p {
+  font-size: 14px;
+}
+.about {
+  align-items: center;
+}
+.collective-visual {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+.pixel-orbit {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.network-story::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#b4b9c420 0.7px, transparent 0.7px);
+  background-size: 6px 6px;
+  mask-image: linear-gradient(145deg, #000, transparent 75%);
+  pointer-events: none;
+}
+.activities {
+  background: #0d0f13;
+}
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 30px;
+  background: transparent;
+  scroll-margin-top: 30px;
+}
+.activity-card > .pixel-field {
+  height: 100px;
+  margin-bottom: 30px;
+  opacity: 1;
+  color: var(--accent-soft);
+  filter: brightness(1.2);
+  transition:
+    color 0.3s,
+    filter 0.3s;
+}
+.activity-card:hover > .pixel-field,
+.activity-card:focus-within > .pixel-field {
+  color: #fff0fb;
+  filter: brightness(1.4);
+}
+.activity-card h3 {
+  font-size: 16px;
+  margin: 0 0 20px;
+  font-weight: 400;
+}
+.activity-card p {
+  margin-bottom: 28px;
+}
+.activity-link {
+  margin-top: auto;
+  width: fit-content;
+}
+.activity-card:hover {
+  background: #15171d;
+}
+.story-art {
+  background: #c9ccd2;
+  color: #20232b;
+  height: 335px;
+  border-color: #c9ccd2;
+}
+.story-tag,
+.story-caption,
+.network-diagram > span {
+  font-family: var(--technical-font);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+}
+.story-tag {
+  position: relative;
+  z-index: 1;
+  color: #515562;
+}
+.story-title {
+  font-size: clamp(24px, 2.7vw, 39px);
+  font-weight: 400;
+  line-height: 1.35;
+  margin-top: 25px;
+  letter-spacing: -0.04em;
+}
+.story-art > .pixel-field {
+  position: absolute;
+  width: 100%;
+  height: 145px;
+  top: auto;
+  bottom: 18px;
+  right: -40px;
+  color: var(--accent-muted);
+  transform: none;
+  opacity: 0.65;
+}
+.feature-story:hover .story-art > .pixel-field {
+  transform: none;
+  opacity: 1;
+}
+.story-caption {
+  color: #515562;
+  z-index: 1;
+}
+.story-art > .interwoven-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  pointer-events: none;
+}
+.feature-story .story-title {
+  max-width: 58%;
+  font-size: clamp(23px, 2.5vw, 35px);
+}
+.feature-story:hover .story-art > .interwoven-lines {
+  transform: none;
+}
+.network-story {
+  position: relative;
+  background: transparent;
+  padding: 0;
+  border: 0;
+}
+.network-story::before {
+  display: none;
+}
+.metalab-artwork {
+  position: relative;
+  background: #c9ccd2;
+  height: 335px;
+  flex: 0 0 335px;
+  overflow: hidden;
+}
+.metalab-corner-logo {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  width: clamp(120px, 12vw, 165px);
+  max-width: 45%;
+  height: auto;
+  pointer-events: none;
+}
+.unaite-network {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 335px;
+  flex: 0 0 335px;
+  min-width: 0;
+  pointer-events: none;
+  background: #c9ccd2;
+  border: 1px solid #c9ccd2;
+}
+.network-story .story-info {
+  border-top: 0;
+}
+.network-diagram,
+.network-story .story-info {
+  position: relative;
+}
+.network-diagram {
+  max-width: 360px;
+  gap: 10px;
+}
+.network-diagram > span {
+  border-radius: 0;
+  background: #101318;
+}
+.network-diagram > strong {
+  font-size: 38px;
+  padding-block: 15px;
+}
+.story-info {
+  padding: 24px 0 24px 5px;
+}
+.join-section {
+  background: #101318;
+  border: 1px solid var(--line);
+  padding: 52px;
+}
+.join-section > h2 {
+  margin-top: 0;
+  font-size: clamp(28px, 3.5vw, 48px);
+}
+.join-section > .pixel-field {
+  position: absolute;
+  right: -25px;
+  top: -30px;
+  width: 42%;
+  opacity: 0.22;
+  mask-image: linear-gradient(#000, transparent);
+}
+.join-section h2 span {
+  color: inherit;
+}
+.join-bottom {
+  margin-top: 32px;
+}
+.footer-bottom {
+  font-family: var(--technical-font);
+}
+@media (max-width: 1000px) {
+  .activity-card > .pixel-field {
+    height: 110px;
+  }
+}
+@media (max-width: 700px) {
+  .logo-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 12px;
+  }
+  .company-logo {
+    height: 42px;
+  }
+  .company-logo:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+  .section {
+    padding-block: 60px;
+  }
+  .collective-visual {
+    display: none;
+  }
+  .about {
+    gap: 0;
+  }
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+  .activity-card {
+    border-right: 0;
+    border-bottom: 1px solid #30343d;
+  }
+  .activity-card:last-child {
+    border-bottom: 0;
+  }
+  .activity-card > .pixel-field {
+    height: 80px;
+    width: 160px;
+    margin-bottom: 20px;
+  }
+  .activity-card h3 {
+    font-size: 19px;
+  }
+  .activity-card p {
+    font-size: 14px;
+  }
+  .join-section {
+    padding: 30px 23px;
+  }
+  .join-section > .pixel-field {
+    width: 70%;
+  }
+  .story-tag,
+  .story-caption {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .activity-card > .pixel-field {
+    transition: none;
+  }
+}

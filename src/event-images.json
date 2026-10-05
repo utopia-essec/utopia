@@ -1,0 +1,128 @@
+{
+  "event_2": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-ia-a-tout-prix-2024-poster-960.webp",
+    "srcSet": "/events/utopia-ia-a-tout-prix-2024-poster-480.webp 480w, /events/utopia-ia-a-tout-prix-2024-poster-960.webp 960w"
+  },
+  "event_3": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-ia-en-entreprise-2024-poster-960.webp",
+    "srcSet": "/events/utopia-ia-en-entreprise-2024-poster-480.webp 480w, /events/utopia-ia-en-entreprise-2024-poster-960.webp 960w"
+  },
+  "event_1": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-future-of-ai-2024-poster-960.webp",
+    "srcSet": "/events/utopia-future-of-ai-2024-poster-480.webp 480w, /events/utopia-future-of-ai-2024-poster-960.webp 960w"
+  },
+  "event_4": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-arc-prize-2024-poster-960.webp",
+    "srcSet": "/events/utopia-arc-prize-2024-poster-480.webp 480w, /events/utopia-arc-prize-2024-poster-960.webp 960w"
+  },
+  "event_6": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-meetup-alan-2024-poster-960.webp",
+    "srcSet": "/events/utopia-meetup-alan-2024-poster-480.webp 480w, /events/utopia-meetup-alan-2024-poster-960.webp 960w"
+  },
+  "event_5": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-unaite-inaugural-conference-2024-poster-960.webp",
+    "srcSet": "/events/utopia-unaite-inaugural-conference-2024-poster-480.webp 480w, /events/utopia-unaite-inaugural-conference-2024-poster-960.webp 960w"
+  },
+  "event_8": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-droit-et-ia-roundtable-2025-poster-960.webp",
+    "srcSet": "/events/utopia-droit-et-ia-roundtable-2025-poster-480.webp 480w, /events/utopia-droit-et-ia-roundtable-2025-poster-960.webp 960w"
+  },
+  "event_9": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-unaite-perplexity-2025-poster-960.webp",
+    "srcSet": "/events/utopia-unaite-perplexity-2025-poster-480.webp 480w, /events/utopia-unaite-perplexity-2025-poster-960.webp 960w"
+  },
+  "event_7": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-start-from-scratch-2025-poster-960.webp",
+    "srcSet": "/events/utopia-start-from-scratch-2025-poster-480.webp 480w, /events/utopia-start-from-scratch-2025-poster-960.webp 960w"
+  },
+  "event_11": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-building-outliers-french-founders-2025-poster-960.webp",
+    "srcSet": "/events/utopia-building-outliers-french-founders-2025-poster-480.webp 480w, /events/utopia-building-outliers-french-founders-2025-poster-960.webp 960w"
+  },
+  "event_12": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-healthcare-ai-2025-poster-960.webp",
+    "srcSet": "/events/utopia-healthcare-ai-2025-poster-480.webp 480w, /events/utopia-healthcare-ai-2025-poster-960.webp 960w"
+  },
+  "event_10": {
+    "width": 1080,
+    "height": 1080,
+    "src": "/events/utopia-women-in-ai-2025-poster-960.webp",
+    "srcSet": "/events/utopia-women-in-ai-2025-poster-480.webp 480w, /events/utopia-women-in-ai-2025-poster-960.webp 960w"
+  },
+  "hack_1": {
+    "width": 1080,
+    "height": 1080,
+    "src": "/events/utopia-spotlight-consumer-edge-hackathon-2024-poster-960.webp",
+    "srcSet": "/events/utopia-spotlight-consumer-edge-hackathon-2024-poster-480.webp 480w, /events/utopia-spotlight-consumer-edge-hackathon-2024-poster-960.webp 960w"
+  },
+  "hack_2": {
+    "width": 1080,
+    "height": 1080,
+    "src": "/events/utopia-llm-agentic-ai-hackathon-2025-poster-960.webp",
+    "srcSet": "/events/utopia-llm-agentic-ai-hackathon-2025-poster-480.webp 480w, /events/utopia-llm-agentic-ai-hackathon-2025-poster-960.webp 960w"
+  },
+  "secure-horizons-2026": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-secure-horizons-2026-poster-960.webp",
+    "srcSet": "/events/utopia-secure-horizons-2026-poster-480.webp 480w, /events/utopia-secure-horizons-2026-poster-960.webp 960w",
+    "source": "https://images.lumacdn.com/uploads/vb/d54a7996-3b61-4819-8c29-2faa0a8b2bc8.png"
+  },
+  "investment-banking-2026": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-investment-banking-2026-poster-960.webp",
+    "srcSet": "/events/utopia-investment-banking-2026-poster-480.webp 480w, /events/utopia-investment-banking-2026-poster-960.webp 960w",
+    "source": "https://images.lumacdn.com/event-covers/ry/7e7137b8-685e-4a5b-83fb-1bcbcc442b31.jpg"
+  },
+  "echos-2050-2026": {
+    "width": 800,
+    "height": 800,
+    "src": "/events/utopia-echos-2050-2026-poster-960.webp",
+    "srcSet": "/events/utopia-echos-2050-2026-poster-480.webp 480w, /events/utopia-echos-2050-2026-poster-960.webp 800w",
+    "source": "https://media.licdn.com/dms/image/v2/D4E22AQGmtwS__wrgZg/feedshare-shrink_800/B4EZ6Yg39.HAAg-/0/1780675215897?e=2147483647&v=beta&t=7mqNU_9y4NoYhe7SvwmQSLeGZC5pCvI9ZJzVjpwj-rg"
+  },
+  "kpmg-2026": {
+    "width": 800,
+    "height": 800,
+    "src": "/events/utopia-kpmg-2026-poster-960.webp",
+    "srcSet": "/events/utopia-kpmg-2026-poster-480.webp 480w, /events/utopia-kpmg-2026-poster-960.webp 800w",
+    "source": "https://media.licdn.com/dms/image/v2/D4E22AQGy7m-CZEPbwQ/feedshare-shrink_800/B4EZz8gO1XIEAg-/0/1773762834238?e=2147483647&v=beta&t=N9RtnUdBBxqYM8I9JRnfoImJ2ZdbOn6tlgizL3zfFqc"
+  },
+  "ai-venture-sprint-2026": {
+    "width": 960,
+    "height": 956,
+    "src": "/events/utopia-ai-venture-sprint-2026-poster-960.webp",
+    "srcSet": "/events/utopia-ai-venture-sprint-2026-poster-480.webp 480w, /events/utopia-ai-venture-sprint-2026-poster-960.webp 960w",
+    "source": "https://media.licdn.com/dms/image/v2/D4E22AQH2sSZt4NPmUw/feedshare-image-high-res/B4EZv_ACvNGoAU-/0/1769509760295?e=1792627200&v=beta&t=KuIqxQ_NSMQ5x7oehKEIbTEVlqO2YzY9p71FrMM9s3k"
+  },
+  "paris-builds-2026": {
+    "width": 960,
+    "height": 960,
+    "src": "/events/utopia-paris-builds-2026-poster-960.webp",
+    "srcSet": "/events/utopia-paris-builds-2026-poster-480.webp 480w, /events/utopia-paris-builds-2026-poster-960.webp 960w",
+    "source": "https://images.lumacdn.com/uploads/bx/b4d431fb-0786-4e64-a6d6-e47bd26e29e2.png"
+  }
+}

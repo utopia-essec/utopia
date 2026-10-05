@@ -1,0 +1,105 @@
+.header {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  background: transparent;
+  border-bottom-color: rgb(255 255 255 / 0.12);
+}
+.hero-ascii {
+  position: relative;
+  isolation: isolate;
+  padding-top: 100px;
+  background: #0b0d10;
+}
+.hero-ascii .hero-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: clamp(580px, 48vw, 800px);
+  padding-block: 90px;
+  pointer-events: none;
+}
+.hero-ascii .hero-copy {
+  max-width: 700px;
+  margin-inline: 0 auto;
+  text-align: left;
+  pointer-events: auto;
+}
+.hero-ascii .hero-actions {
+  justify-content: flex-start;
+}
+.hero-ascii .hero-copy > p {
+  color: #d0d1d7;
+  text-shadow: 0 1px 12px #000;
+}
+.hero-ascii h1 {
+  text-shadow: 0 2px 28px #0006;
+}
+.ascii-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.ascii-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      #0b0d10eb 0%,
+      #0b0d10b3 30%,
+      #0b0d1030 65%,
+      #0b0d100d
+    ),
+    linear-gradient(0deg, #0b0d10, transparent 20%);
+  pointer-events: none;
+}
+.ascii-canvas,
+.ascii-fallback {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+}
+.ascii-fallback {
+  object-fit: cover;
+  object-position: center;
+}
+.ascii-fallback.is-rendered {
+  opacity: 0;
+}
+.ascii-control {
+  position: absolute;
+  z-index: 2;
+  right: 5.2%;
+  bottom: 24px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 13px;
+  background: #0b0d10cc;
+  color: #d0d1d7;
+  border: 1px solid #454850;
+  font-size: 11px;
+}
+.ascii-control:hover {
+  color: #fff;
+  border-color: var(--accent);
+}
+@media (max-width: 700px) {
+  .hero-ascii {
+    padding-top: 78px;
+  }
+  .hero-ascii .hero-layout {
+    min-height: 640px;
+    padding-block: 85px 110px;
+  }
+  .ascii-scene::after {
+    background:
+      linear-gradient(90deg, #0b0d10d9, #0b0d1055),
+      linear-gradient(0deg, #0b0d10, transparent 35%);
+  }
+}

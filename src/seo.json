@@ -1,0 +1,18 @@
+{
+  "/": {
+    "title": "Utopia ESSEC | AI Conferences, Hackathons & Consulting",
+    "description": "Explore Utopia, ESSEC Business School’s AI association: conferences, hackathons, hands-on learning, consulting, and partnerships with the AI ecosystem."
+  },
+  "/conferences": {
+    "title": "AI Conferences & Industry Talks | Utopia ESSEC",
+    "description": "Discover Utopia’s AI conferences and roundtables with founders, researchers, and industry leaders. Browse event dates, posters, and available event links."
+  },
+  "/contact": {
+    "title": "Contact Utopia | ESSEC AI Association",
+    "description": "Contact Utopia at utopia.essec@gmail.com about AI conferences, hackathons, consulting, partnerships, or joining ESSEC’s AI community."
+  },
+  "/hackathons": {
+    "title": "AI Hackathons & Builder Events | Utopia ESSEC",
+    "description": "Explore AI hackathons from Utopia and its network, including Secure Horizons, Paris Builds, and AI Venture Sprint. Find event dates, posters, and details."
+  }
+}
