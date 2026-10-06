@@ -19,7 +19,7 @@
 }
 .logo-list {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: center;
   gap: clamp(24px, 4vw, 70px);
 }
@@ -190,7 +190,7 @@
 }
 .metalab-corner-logo {
   position: absolute;
-  top: 18px;
+  bottom: 18px;
   left: 20px;
   width: clamp(120px, 12vw, 165px);
   max-width: 45%;
@@ -262,16 +262,18 @@
   }
 }
 @media (max-width: 700px) {
+  .company-logo__art--perplexity {
+    transform: scale(0.9);
+  }
+  .company-logo__art--huggingface {
+    transform: scale(0.95);
+  }
   .logo-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px 12px;
   }
   .company-logo {
     height: 42px;
-  }
-  .company-logo:last-child {
-    grid-column: 1 / -1;
-    justify-self: center;
   }
   .section {
     padding-block: 60px;
@@ -293,9 +295,11 @@
     border-bottom: 0;
   }
   .activity-card > .pixel-field {
-    height: 80px;
-    width: 160px;
-    margin-bottom: 20px;
+    width: min(100%, 320px);
+    height: auto;
+    aspect-ratio: 2 / 1;
+    align-self: center;
+    margin: 8px auto 28px;
   }
   .activity-card h3 {
     font-size: 19px;

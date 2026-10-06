@@ -103,7 +103,7 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="header">
+      <header className={`header${menuOpen ? ' header--menu-open' : ''}`}>
         <Logo />
         <nav className="desktop-nav" aria-label="Main navigation">
           {links.map(([label, href]) => (
@@ -175,9 +175,6 @@ export default function App() {
                   Welcome to Utopia.
                 </p>
                 <div className="hero-actions">
-                  <a className="button button-dark" href="#join">
-                    Find your people <ArrowUpRight size={20} />
-                  </a>
                   <a className="text-link" href="#activities">
                     Explore Utopia <ArrowDown size={16} />
                   </a>

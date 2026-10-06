@@ -90,6 +90,12 @@
   border-color: var(--accent);
 }
 @media (max-width: 700px) {
+  .header--menu-open {
+    background: rgb(28 31 39 / 0.9);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-bottom-color: transparent;
+  }
   .hero-ascii {
     padding-top: 78px;
   }

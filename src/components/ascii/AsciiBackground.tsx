@@ -189,13 +189,18 @@ export default function AsciiBackground({
         width / image.naturalWidth,
         height / image.naturalHeight,
       )
-      sample.drawImage(
-        image,
-        (width - image.naturalWidth * scale) / 2 + width * imageOffsetX,
-        (height - image.naturalHeight * scale) / 2 + height * imageOffsetY,
-        image.naturalWidth * scale,
-        image.naturalHeight * scale,
+      const drawnWidth = image.naturalWidth * scale
+      const drawnHeight = image.naturalHeight * scale
+      // Honor offsets within available crop space, without exposing empty edges.
+      const drawX = Math.max(
+        width - drawnWidth,
+        Math.min(0, (width - drawnWidth) / 2 + width * imageOffsetX),
       )
+      const drawY = Math.max(
+        height - drawnHeight,
+        Math.min(0, (height - drawnHeight) / 2 + height * imageOffsetY),
+      )
+      sample.drawImage(image, drawX, drawY, drawnWidth, drawnHeight)
       const pixels = sample.getImageData(0, 0, width, height).data
       cells = []
       for (let y = 0; y < height; y += recipe.cellSize) {
@@ -275,7 +280,6 @@ export default function AsciiBackground({
         <img
           className={`ascii-fallback ${ready && !failed ? 'is-rendered' : ''}`}
           style={{
-            transform: `translate(${imageOffsetX * 100}%, ${imageOffsetY * 100}%)`,
             filter: `saturate(${recipe.saturation}%)`,
           }}
           src={src}
