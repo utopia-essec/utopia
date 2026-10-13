@@ -46,8 +46,7 @@ const links = [
 function Logo() {
   return (
     <a href="/" className="wordmark" aria-label="Utopia home">
-      <img className="moon-logo" src="/utopia-moons.svg" alt="" />
-      Utopia
+      <img className="utopia-logo" src="/utopia-logo.svg" alt="Utopia" width="935" height="205" />
     </a>
   )
 }
