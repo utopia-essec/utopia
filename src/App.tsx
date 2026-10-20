@@ -9,6 +9,8 @@ import PageMetadata from './PageMetadata'
 import UnaiteNetwork from './UnaiteNetwork'
 import InterwovenLines from './InterwovenLines'
 import ContactPage from './ContactPage'
+import HackathonPage from './HackathonPage'
+import { getHackathon } from './events'
 
 const activities = [
   {
@@ -46,7 +48,13 @@ const links = [
 function Logo() {
   return (
     <a href="/" className="wordmark" aria-label="Utopia home">
-      <img className="utopia-logo" src="/utopia-logo.svg" alt="Utopia" width="935" height="205" />
+      <img
+        className="utopia-logo"
+        src="/utopia-logo.svg"
+        alt="Utopia"
+        width="935"
+        height="205"
+      />
     </a>
   )
 }
@@ -60,6 +68,9 @@ export default function App() {
       : path === '/hackathons'
         ? 'hackathons'
         : null
+  const hackathon = path.startsWith('/hackathons/')
+    ? getHackathon(path.slice('/hackathons/'.length))
+    : undefined
   useEffect(() => {
     const elements = document.querySelectorAll(
       '.section-heading, .about > div, .activity-card, .highlights-grid > a, .join-section',
@@ -154,6 +165,8 @@ export default function App() {
 
       {path === '/contact' ? (
         <ContactPage />
+      ) : hackathon ? (
+        <HackathonPage event={hackathon} />
       ) : archive ? (
         <EventsPage category={archive} />
       ) : (

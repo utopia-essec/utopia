@@ -124,6 +124,9 @@ a.event-poster:hover img {
   line-height: 1.6;
   margin-top: 12px;
 }
+.event-info h2 a:hover {
+  color: var(--accent);
+}
 .poster-fallback {
   width: 100%;
   padding: 20px;

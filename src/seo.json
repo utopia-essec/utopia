@@ -11,6 +11,26 @@
     "title": "Contact Utopia | ESSEC AI Association",
     "description": "Contact Utopia at utopia.essec@gmail.com about AI conferences, hackathons, consulting, partnerships, or joining ESSEC’s AI community."
   },
+  "/hackathons/secure-horizons": {
+    "title": "Secure Horizons — AI & Cybersecurity Hackathon | Utopia ESSEC",
+    "description": "A 36-hour AI and cybersecurity hackathon at ESSEC Cergy on 10–11 October 2026, organized by Utopia, Kryptosphère, and ESSEC Metalab."
+  },
+  "/hackathons/paris-builds": {
+    "title": "Paris Builds — 36-Hour Hackathon | Utopia ESSEC",
+    "description": "A 36-hour hackathon in Paris on 27–28 June 2026, organized by Unaite with Y Combinator, with tracks in agents, robotics, and startup building."
+  },
+  "/hackathons/ai-venture-sprint": {
+    "title": "AI Venture Sprint — No-Code Hackathon | Utopia ESSEC",
+    "description": "A six-hour no-code hackathon at ESSEC where teams built and pitched AI prototypes with Lovable for a €500 prize pool."
+  },
+  "/hackathons/from-llm-to-agentic-ai": {
+    "title": "From LLM to Agentic AI — Hackathon | Utopia ESSEC",
+    "description": "An agentic AI hackathon at ESSEC Cergy on 4–6 April 2025, organized by Utopia and Kryptosphère, with tracks in finance and cybersecurity and €4,050 in cash prizes."
+  },
+  "/hackathons/consumer-edge-hack": {
+    "title": "Spotlight: Consumer Edge Hack — On-Device AI | Utopia ESSEC",
+    "description": "An on-device AI hackathon in Paris on 22–23 November 2024, hosted by Entrepreneur First with Ekimetrics and Unaite, with judges from Kyutai, Photoroom, and Datakalab."
+  },
   "/hackathons": {
     "title": "AI Hackathons & Builder Events | Utopia ESSEC",
     "description": "Explore AI hackathons from Utopia and its network, including Secure Horizons, Paris Builds, and AI Venture Sprint. Find event dates, posters, and details."

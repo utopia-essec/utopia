@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import PixelField from './PixelField'
-import { getEvents, type ClubEvent, type EventCategory } from './events'
+import {
+  formatEventDate,
+  getEvents,
+  type ClubEvent,
+  type EventCategory,
+} from './events'
 import './events.css'
 import AsciiBackground from './components/ascii/AsciiBackground'
 import { conferenceDither, hackathonDither } from './components/ascii/presets'
@@ -15,12 +20,8 @@ const previews: Record<
 function EventCard({ event, index }: { event: ClubEvent; index: number }) {
   const [failed, setFailed] = useState(false)
   const preview = previews[event.id]
-  const date = new Date(`${event.date}T12:00:00Z`).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  })
+  const page = event.slug && `/hackathons/${event.slug}`
+  const href = page || event.url
   const artwork = (
     <>
       {failed || (!preview && !event.image) ? (
@@ -29,7 +30,7 @@ function EventCard({ event, index }: { event: ClubEvent; index: number }) {
             variant={event.category === 'hackathons' ? 'grid' : 'signal'}
           />
           <h3>{event.title}</h3>
-          {event.url && (
+          {href && (
             <span>
               View event details <ArrowUpRight size={16} />
             </span>
@@ -49,7 +50,7 @@ function EventCard({ event, index }: { event: ClubEvent; index: number }) {
           onError={() => setFailed(true)}
         />
       )}
-      {event.url && (
+      {href && (
         <span className="poster-open" aria-hidden="true">
           <ArrowUpRight size={18} />
         </span>
@@ -58,12 +59,12 @@ function EventCard({ event, index }: { event: ClubEvent; index: number }) {
   )
   return (
     <article className="event-card">
-      {event.url ? (
+      {href ? (
         <a
           className="event-poster"
-          href={event.url}
-          target="_blank"
-          rel="noreferrer"
+          href={href}
+          target={page ? undefined : '_blank'}
+          rel={page ? undefined : 'noreferrer'}
           aria-label={`View ${event.title}`}
         >
           {artwork}
@@ -72,8 +73,8 @@ function EventCard({ event, index }: { event: ClubEvent; index: number }) {
         <div className="event-poster">{artwork}</div>
       )}
       <div className="event-info">
-        <time dateTime={event.date}>{date}</time>
-        <h2>{event.title}</h2>
+        <time dateTime={event.date}>{formatEventDate(event)}</time>
+        <h2>{page ? <a href={page}>{event.title}</a> : event.title}</h2>
         {event.description && <p>{event.description}</p>}
       </div>
     </article>
