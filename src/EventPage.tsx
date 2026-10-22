@@ -9,7 +9,7 @@ import {
 import { formatEventDate, type ClubEvent } from './events'
 import { peopleLabel, resolvePeople, roleName } from './people'
 import imageManifest from './event-images.json'
-import './hackathon.css'
+import './event-page.css'
 
 const previews: Record<string, { src: string; srcSet: string }> = imageManifest
 
@@ -34,7 +34,7 @@ function status({ date, endDate }: ClubEvent) {
   return 'Finished'
 }
 
-export default function HackathonPage({ event }: { event: ClubEvent }) {
+export default function EventPage({ event }: { event: ClubEvent }) {
   const people = resolvePeople(event.people)
   const tabs = (
     [
@@ -67,37 +67,48 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
     select(next)
     document.getElementById(`tab-${next}`)?.focus()
   }
-  const stats = [
-    ['Duration', event.stats?.duration],
-    ['Participants', event.stats?.participants],
-    ['Prize pool', event.stats?.prizePool],
-    ['Tracks', event.stats?.tracks ?? (event.tracks?.length || undefined)],
-  ] as const
+  const stats =
+    event.category === 'hackathons'
+      ? ([
+          ['Duration', event.stats?.duration],
+          ['Participants', event.stats?.participants],
+          ['Prize pool', event.stats?.prizePool],
+          [
+            'Tracks',
+            event.stats?.tracks ?? (event.tracks?.length || undefined),
+          ],
+        ] as const)
+      : ([
+          ['Format', event.stats?.format],
+          ['Speakers', event.stats?.speakers ?? (people.length || undefined)],
+          ['Attendees', event.stats?.attendees],
+          ['Language', event.stats?.language],
+        ] as const)
   // Only partners are shown; other credit groups are kept in the data for later.
-  const partners = event.credits?.find((group) => group.label === 'Partners')
+  const credits = event.credits?.filter((group) => group.label === 'Partners')
   const preview = previews[event.id]
   const poster = preview?.src ?? event.image
   const overview =
     event.overview ?? (event.description ? [event.description] : [])
 
   return (
-    <main id="main" className="hackathon-page">
-      <aside className="hackathon-sidebar">
-        <a className="hackathon-back" href="/hackathons">
-          <ArrowLeft size={16} /> All hackathons
+    <main id="main" className="detail-page">
+      <aside className="detail-sidebar">
+        <a className="detail-back" href={`/${event.category}`}>
+          <ArrowLeft size={16} /> All {event.category}
         </a>
         {poster && (
           <img
-            className="hackathon-poster"
+            className="detail-poster"
             src={poster}
             srcSet={preview?.srcSet}
             sizes="(max-width: 900px) 90vw, 360px"
             alt={`Poster for ${event.title}`}
           />
         )}
-        <span className="hackathon-status">{status(event)}</span>
+        <span className="detail-status">{status(event)}</span>
         <h1>{event.title}</h1>
-        <ul className="hackathon-meta">
+        <ul className="detail-meta">
           <li>
             <CalendarDays size={16} />
             <time dateTime={event.date}>{formatEventDate(event)}</time>
@@ -113,7 +124,7 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
               <MapPin size={16} />
               <span>
                 <a
-                  className="hackathon-address"
+                  className="detail-address"
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([event.location, event.address].filter(Boolean).join(', '))}`}
                   target="_blank"
                   rel="noreferrer"
@@ -127,7 +138,7 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
             </li>
           )}
         </ul>
-        <dl className="hackathon-facts">
+        <dl className="detail-facts">
           {stats.map(([label, value]) => (
             <div key={label}>
               <dt>{label}</dt>
@@ -136,7 +147,7 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
           ))}
         </dl>
         {!!event.links?.length && (
-          <div className="hackathon-links">
+          <div className="detail-links">
             {event.links.map((link) => (
               <a
                 key={link.url}
@@ -152,10 +163,10 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
         )}
       </aside>
 
-      <div className="hackathon-content">
+      <div className="detail-content">
         {tabs.length > 1 && (
           <div
-            className="hackathon-tabs"
+            className="detail-tabs"
             role="tablist"
             aria-label={`${event.title} details`}
             onKeyDown={onKeyDown}
@@ -166,7 +177,7 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
                 id={`tab-${id}`}
                 role="tab"
                 aria-selected={tab === id}
-                aria-controls="hackathon-panel"
+                aria-controls="detail-panel"
                 tabIndex={tab === id ? 0 : -1}
                 onClick={() => select(id)}
               >
@@ -177,13 +188,13 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
         )}
 
         <section
-          id="hackathon-panel"
-          className="hackathon-panel"
+          id="detail-panel"
+          className="detail-panel"
           role={tabs.length > 1 ? 'tabpanel' : undefined}
           aria-labelledby={tabs.length > 1 ? `tab-${tab}` : undefined}
         >
           {tab === 'overview' && (
-            <div className="hackathon-overview">
+            <div className="detail-overview">
               {overview.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -203,25 +214,34 @@ export default function HackathonPage({ event }: { event: ClubEvent }) {
               {event.sections?.map((section) => (
                 <section key={section.title}>
                   <h2>{section.title}</h2>
-                  <ul className="track-list">
-                    {section.items.map((item) => (
-                      <li key={item.name}>
-                        <h3>{item.name}</h3>
-                        {item.detail && <p>{item.detail}</p>}
-                      </li>
-                    ))}
-                  </ul>
+                  {section.list ? (
+                    <ul className="agenda-list">
+                      {section.items.map((item) => (
+                        <li key={item.name}>
+                          <strong>{item.name}</strong>
+                          {item.detail && ` — ${item.detail}`}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className="track-list">
+                      {section.items.map((item) => (
+                        <li key={item.name}>
+                          <h3>{item.name}</h3>
+                          {item.detail && <p>{item.detail}</p>}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </section>
               ))}
-              {partners && (
-                <section>
-                  <h2>Partners</h2>
-                  <p className="hackathon-partners">
-                    {partners.names.join(' · ')}
-                  </p>
+              {credits?.map((group) => (
+                <section key={group.label}>
+                  <h2>{group.label}</h2>
+                  <p className="detail-partners">{group.names.join(' · ')}</p>
                 </section>
-              )}
-              {event.note && <p className="hackathon-note">{event.note}</p>}
+              ))}
+              {event.note && <p className="detail-note">{event.note}</p>}
             </div>
           )}
           {tab === 'prizes' && (

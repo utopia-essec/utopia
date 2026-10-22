@@ -34,5 +34,65 @@
   "/hackathons": {
     "title": "AI Hackathons & Builder Events | Utopia ESSEC",
     "description": "Explore AI hackathons from Utopia and its network, including Secure Horizons, Paris Builds, and AI Venture Sprint. Find event dates, posters, and details."
+  },
+  "/conferences/future-of-ai": {
+    "title": "Future of AI — Roundtable | Utopia ESSEC",
+    "description": "A roundtable on the future of AI in France at Albert School, Paris, on 27 September 2024, with speakers from Mistral AI, Mirakl, Snowflake, and Kima Ventures."
+  },
+  "/conferences/ia-a-tout-prix": {
+    "title": "IA à tout prix ? — Roundtable | Utopia ESSEC",
+    "description": "A roundtable on the major questions raised by AI at ESSEC Cergy on 15 October 2024, with Paul Midy, Isabelle Ryl (PRAIRIE), Victoire Mine (Meta), and Vincent Luciani (Artefact)."
+  },
+  "/conferences/ia-en-entreprise": {
+    "title": "L'IA en entreprise — Conference | Utopia ESSEC",
+    "description": "A conference at Albert School, Paris, on 31 October 2024 about what AI really changes inside companies, with AI Sisters and AI Builders."
+  },
+  "/conferences/arc-prize": {
+    "title": "ARC Prize University Tour — Paris | Utopia ESSEC",
+    "description": "The Paris stop of the ARC Prize 2024 University Tour on 26 November 2024, hosted by Unaite, with François Chollet on ARC-AGI and the path to general intelligence."
+  },
+  "/conferences/unaite-inaugural-conference": {
+    "title": "Unaite Inaugural Conference | Utopia ESSEC",
+    "description": "The inaugural conference of Unaite at Université PSL on 2 December 2024, with roundtables on AI research and business featuring PRAIRIE, Kyutai, Inria, Meta, and more."
+  },
+  "/conferences/meetup-alan": {
+    "title": "Meetup Alan | Utopia ESSEC",
+    "description": "A meetup at Alan’s Paris offices on 11 December 2024 for Unaite’s student AI associations, with Alan co-founder and CTO Charles Gorintin."
+  },
+  "/conferences/start-from-scratch": {
+    "title": "Start From Scratch — Roundtable | Utopia ESSEC",
+    "description": "A roundtable on building in AI at Albert School, Paris, on 22 January 2025, with Kima Ventures, Argil (YC S24), OpenAI, and a top GPT Store creator."
+  },
+  "/conferences/droit-et-ia": {
+    "title": "Droit et IA — Roundtable | Utopia ESSEC",
+    "description": "A roundtable on law and AI at August Debouzy, Paris, on 27 January 2025, with Lex ESSEC and speakers from Mistral AI, August Debouzy, and EDHEC."
+  },
+  "/conferences/unaite-perplexity": {
+    "title": "Unaite x Perplexity — Fireside Chat | Utopia ESSEC",
+    "description": "A fireside chat with Perplexity co-founder and CEO Aravind Srinivas at Université PSL on 11 February 2025, during the AI Action Summit week in Paris."
+  },
+  "/conferences/women-in-ai": {
+    "title": "Women in AI — Roundtable | Utopia ESSEC",
+    "description": "A roundtable on the role of women in AI and gender diversity at Université Paris Dauphine-PSL on 20 February 2025."
+  },
+  "/conferences/building-outliers": {
+    "title": "Building Outliers — French Founders | Utopia ESSEC",
+    "description": "An evening with the co-founders of Defacto, Fleet, and Luko at the HEC Paris Alumni House on 26 February 2025."
+  },
+  "/conferences/healthcare-ai": {
+    "title": "HealthCare x AI — Panel | Utopia ESSEC",
+    "description": "A panel on AI in healthcare at Albert School, Paris, on 12 March 2025, with Galion.exe, Theremia, and Sanofi."
+  },
+  "/conferences/kpmg-ai-in-action": {
+    "title": "AI in Action — KPMG | Utopia ESSEC",
+    "description": "A conference at KPMG La Défense on 25 March 2026 with the ESCP AI Society on how KPMG uses AI in audit, advisory, and cybersecurity."
+  },
+  "/conferences/ai-investment-banking": {
+    "title": "AI × Investment Banking — Roundtable | Utopia ESSEC",
+    "description": "A roundtable with DAU’IA on 2 April 2026 with speakers from BNP Paribas, Société Générale, Goldman Sachs, and Blackroom."
+  },
+  "/conferences/echos-of-2050": {
+    "title": "Echos of 2050 — Conference | Utopia ESSEC",
+    "description": "A conference at the Maison des ESSEC, Paris, on 16 June 2026 on AI, digital sovereignty, and the changes ahead, with the ESSEC Alumni Club Digital & Technology and VivaTech."
   }
 }

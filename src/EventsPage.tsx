@@ -20,7 +20,7 @@ const previews: Record<
 function EventCard({ event, index }: { event: ClubEvent; index: number }) {
   const [failed, setFailed] = useState(false)
   const preview = previews[event.id]
-  const page = event.slug && `/hackathons/${event.slug}`
+  const page = event.slug && `/${event.category}/${event.slug}`
   const href = page || event.url
   const artwork = (
     <>

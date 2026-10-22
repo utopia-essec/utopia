@@ -9,8 +9,8 @@ import PageMetadata from './PageMetadata'
 import UnaiteNetwork from './UnaiteNetwork'
 import InterwovenLines from './InterwovenLines'
 import ContactPage from './ContactPage'
-import HackathonPage from './HackathonPage'
-import { getHackathon } from './events'
+import EventPage from './EventPage'
+import { getEvent, type EventCategory } from './events'
 
 const activities = [
   {
@@ -68,9 +68,9 @@ export default function App() {
       : path === '/hackathons'
         ? 'hackathons'
         : null
-  const hackathon = path.startsWith('/hackathons/')
-    ? getHackathon(path.slice('/hackathons/'.length))
-    : undefined
+  const [, category, slug] =
+    path.match(/^\/(conferences|hackathons)\/([^/]+)$/) ?? []
+  const detail = slug ? getEvent(category as EventCategory, slug) : undefined
   useEffect(() => {
     const elements = document.querySelectorAll(
       '.section-heading, .about > div, .activity-card, .highlights-grid > a, .join-section',
@@ -165,8 +165,8 @@ export default function App() {
 
       {path === '/contact' ? (
         <ContactPage />
-      ) : hackathon ? (
-        <HackathonPage event={hackathon} />
+      ) : detail ? (
+        <EventPage event={detail} />
       ) : archive ? (
         <EventsPage category={archive} />
       ) : (

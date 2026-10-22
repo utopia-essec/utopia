@@ -4,6 +4,10 @@
     { "source": "/conferences", "destination": "/conferences/index.html" },
     { "source": "/hackathons", "destination": "/hackathons/index.html" },
     {
+      "source": "/conferences/:slug",
+      "destination": "/conferences/:slug/index.html"
+    },
+    {
       "source": "/hackathons/:slug",
       "destination": "/hackathons/:slug/index.html"
     }
