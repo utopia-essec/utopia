@@ -78,7 +78,7 @@ export const events: ClubEvent[] = [
     stats: {
       duration: '36 hours',
       participants: '150',
-      // TODO: replace with the cash amount, e.g. '€5,000 + YC interview'.
+      // TODO: replace with the cash amount, e.g. '5,000 € + YC interview'.
       prizePool: 'Cash + YC interview',
     },
     credits: [
@@ -110,7 +110,7 @@ export const events: ClubEvent[] = [
     prizes: [
       {
         label: 'Winners',
-        // TODO: replace 'Cash' with the amount, e.g. '€5,000'.
+        // TODO: replace 'Cash' with the amount, e.g. '5,000 €'.
         amount: 'Cash',
         detail: 'Cash prizes and API credits for the winning teams.',
       },
@@ -138,16 +138,16 @@ export const events: ClubEvent[] = [
     stats: {
       duration: '6 hours',
       participants: '30+',
-      prizePool: '€500',
+      prizePool: '500 €',
       tracks: '1',
     },
     credits: [
       { label: 'Organized by', names: ['Utopia', 'ESSEC Business School'] },
       { label: 'Partners', names: ['ESSEC Metalab', 'Lovable'] },
     ],
-    prizes: [{ label: 'Prize pool', amount: '€500' }],
+    prizes: [{ label: 'Prize pool', amount: '500 €' }],
     description:
-      'A six-hour no-code hackathon at ESSEC, organized with Utopia and supported by ESSEC Metalab. Teams built and pitched AI prototypes using Lovable, with a €500 prize pool.',
+      'A six-hour no-code hackathon at ESSEC, organized with Utopia and supported by ESSEC Metalab. Teams built and pitched AI prototypes using Lovable, with a 500 € prize pool.',
   },
   {
     id: 'secure-horizons-2026',
@@ -164,7 +164,7 @@ export const events: ClubEvent[] = [
     stats: {
       duration: '36 hours',
       participants: '150',
-      prizePool: '€15,000',
+      prizePool: '15,000 €',
       tracks: '3',
     },
     credits: [
@@ -197,13 +197,13 @@ export const events: ClubEvent[] = [
       'And right now almost nobody has spent a full weekend attacking and defending an agentic system under real pressure.',
       'So we are building some.',
       'October 10 and 11, UTOPIA, KRYPTOSPHERE & ESSEC MetaLab run Secure Horizons at ESSEC Cergy.',
-      '150 selected builders from the grandes écoles. 36 hours. €15,000 in cash and credits.',
+      '150 selected builders from the grandes écoles. 36 hours. 15,000 € in cash and credits.',
       'Three problems, and not one of them has a known answer.',
     ],
     prizes: [
       {
         label: 'Prize pool',
-        amount: '€15,000',
+        amount: '15,000 €',
         detail: 'In cash and credits.',
       },
     ],
@@ -315,7 +315,7 @@ export const events: ClubEvent[] = [
     location: 'KPMG, Tour Eqho',
     address: '2 Av. Gambetta, 92400 Courbevoie',
     time: '17:30 – 21:00',
-    stats: { format: 'Conference', attendees: '70+' },
+    stats: { format: 'Conference', attendees: '70+', language: 'French' },
     credits: [
       { label: 'Organized by', names: ['Utopia', 'ESCP AI Society'] },
       { label: 'Partners', names: ['KPMG'] },
@@ -346,7 +346,7 @@ export const events: ClubEvent[] = [
     address: '18 Rue de Paradis, 75010 Paris',
     time: '18:30 – 21:30',
     // Attendee counts are rounded "went" numbers from Luma.
-    stats: { format: 'Roundtable', attendees: '400' },
+    stats: { format: 'Roundtable', attendees: '400', language: 'French' },
     credits: [{ label: 'Organized by', names: ['Utopia', 'Unaite'] }],
     overview: [
       'A roundtable on the future of artificial intelligence in France, organized by Utopia and Unaite at Albert School in Paris.',
@@ -568,7 +568,7 @@ export const events: ClubEvent[] = [
     location: 'Albert School',
     address: '18 Rue de Paradis, 75010 Paris',
     time: '18:30 – 21:30',
-    stats: { format: 'Roundtable', attendees: '250+' },
+    stats: { format: 'Roundtable', attendees: '250+', language: 'French' },
     credits: [
       {
         label: 'Organized by',
@@ -710,7 +710,7 @@ export const events: ClubEvent[] = [
     location: 'HEC Paris Alumni House',
     address: '9 Av. Franklin Delano Roosevelt, 75008 Paris',
     time: '19:00 – 21:00',
-    stats: { format: 'Panel' },
+    stats: { format: 'Panel', language: 'French' },
     credits: [
       {
         label: 'Organized by',
@@ -806,7 +806,7 @@ export const events: ClubEvent[] = [
     image: `${origin}/affiches/affiches_hack/hack_2.png`,
     url: 'https://from-llm-to-agentic-ai.devpost.com/',
     description:
-      '4–6 April at ESSEC Cergy. An agentic AI hackathon organized by Utopia and Kryptosphère, with tracks in finance, cybersecurity, and more, and €4,050 in cash prizes.',
+      '4–6 April at ESSEC Cergy. An agentic AI hackathon organized by Utopia and Kryptosphère, with tracks in finance, cybersecurity, and more, and 4,050 € in cash prizes.',
     slug: 'from-llm-to-agentic-ai',
     location: 'ESSEC Business School',
     address: '3 Av. Bernard Hirsch, 95000 Cergy',
@@ -819,7 +819,7 @@ export const events: ClubEvent[] = [
     stats: {
       duration: '48 hours',
       participants: '100',
-      prizePool: '€4,050',
+      prizePool: '4,050 €',
       tracks: '3',
     },
     credits: [
@@ -843,12 +843,12 @@ export const events: ClubEvent[] = [
     prizes: [
       {
         label: 'First place · each track',
-        amount: '€900',
+        amount: '900 €',
         detail: 'In cash, 3 winners.',
       },
       {
         label: 'Second place · each track',
-        amount: '€450',
+        amount: '450 €',
         detail: 'In cash, 3 winners.',
       },
     ],
