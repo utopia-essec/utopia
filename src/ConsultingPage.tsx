@@ -6,7 +6,7 @@ import {
   type CSSProperties,
   type MouseEvent,
 } from 'react'
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import AsciiBackground from './components/ascii/AsciiBackground'
 import { consultingDither } from './components/ascii/presets'
 import { AuditScene, BuildScene, PriceScene } from './IsoScenes'
@@ -289,12 +289,18 @@ function DitherEdge({ id, flip = false }: { id: string; flip?: boolean }) {
   )
 }
 
+// Both marks are flattened to the same grey and height as the home logo row.
+const schools = [
+  { id: 'essec', name: 'ESSEC Business School', width: 727 },
+  { id: 'centralesupelec', name: 'CentraleSupélec', width: 618 },
+]
+
 export default function ConsultingPage() {
   return (
     <main id="main" className="events-page consulting-page">
       <section className="events-intro events-intro-ascii">
         <AsciiBackground
-          src="/utopia-greek-art-dither-reference.webp"
+          src="/utopia-consulting-counsel-hero.webp"
           preset={consultingDither}
           showMotionControl={false}
           imageOffsetY={0.5}
@@ -315,11 +321,32 @@ export default function ConsultingPage() {
               >
                 Book a free diagnostic <ArrowUpRight size={18} />
               </a>
-              <a className="text-link" href="#use-cases">
-                See use cases <ArrowDown size={16} />
-              </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        className="section school-strip"
+        aria-label="Schools our consultants come from"
+      >
+        <div className="school-list">
+          {schools.map((school, index) => (
+            <Fragment key={school.id}>
+              {index > 0 && (
+                <span className="school-cross" aria-hidden="true">
+                  ×
+                </span>
+              )}
+              <img
+                className={`school-logo school-logo--${school.id}`}
+                src={`/logos/${school.id}-logo.webp`}
+                width={school.width}
+                height={320}
+                alt={school.name}
+              />
+            </Fragment>
+          ))}
         </div>
       </section>
 
@@ -347,6 +374,16 @@ export default function ConsultingPage() {
           <h2>Use cases</h2>
         </div>
         <UseCaseExplorer />
+        <div className="usecase-cta">
+          <a
+            className="button button-light"
+            href={bookingUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Book a free diagnostic <ArrowUpRight size={18} />
+          </a>
+        </div>
       </section>
 
       <DitherEdge id="dither-into-light" />
@@ -364,19 +401,17 @@ export default function ConsultingPage() {
               <h3>{step.title}</h3>
               <p>{step.text}</p>
               <span className="mission-tag">{step.tag}</span>
-              {index === 0 && (
-                <a
-                  className="text-link mission-link"
-                  href={bookingUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Book it <ArrowUpRight size={16} />
-                </a>
-              )}
             </li>
           ))}
         </ol>
+        <a
+          className="button button-light mission-cta"
+          href={bookingUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Book a free diagnostic <ArrowUpRight size={18} />
+        </a>
       </section>
       <DitherEdge id="dither-out-of-light" flip />
 

@@ -1,13 +1,79 @@
-/* Widening the scene to the right moves the statue clear of the title. */
-.consulting-page .ascii-scene {
-  right: -25%;
-}
 .consulting-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 16px 28px;
   margin-top: 30px;
+}
+/* The hero keeps the exact box and title position of the events pages: the
+   actions hang below the copy without taking part in its layout. */
+.events-intro .consulting-actions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  flex-wrap: nowrap;
+  margin-top: 22px;
+  white-space: nowrap;
+}
+.events-intro-layout > div:has(> .consulting-actions) {
+  position: relative;
+}
+.events-intro .consulting-actions .button {
+  padding-block: 14px;
+}
+@media (max-width: 700px) {
+  .events-intro .consulting-actions {
+    gap: 18px;
+    margin-top: 18px;
+  }
+  .events-intro .consulting-actions .button {
+    gap: 14px;
+    padding-inline: 16px;
+  }
+}
+
+/* The hero runs straight into the first section, as on the events pages:
+   no rule, and content starting close under the image. */
+.consulting-values {
+  border-top: 0;
+  padding-top: 48px;
+}
+
+/* Schools lockup under the hero: ESSEC × CentraleSupélec, one grey, matched by
+   eye. No rules above or below: it belongs to the hero's run into the page. */
+.section.school-strip {
+  border: 0;
+  padding-block: 44px 0;
+}
+.school-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(22px, 3vw, 40px);
+}
+.school-cross {
+  color: var(--muted);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+}
+.school-logo {
+  display: block;
+  width: auto;
+  height: 52px;
+  opacity: 0.86;
+}
+/* The emblem takes half its height, so it needs more to match the wordmark. */
+.school-logo--centralesupelec {
+  height: 60px;
+}
+@media (max-width: 700px) {
+  .school-logo {
+    height: 42px;
+  }
+  .school-logo--centralesupelec {
+    height: 48px;
+  }
 }
 
 /* What we do: the home activity cards, on three columns and without a link affordance. */
@@ -25,6 +91,9 @@
   grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.6fr);
   grid-template-rows: repeat(6, auto);
   border: 1px solid #30343d;
+}
+.usecase-cta {
+  margin-top: 40px;
 }
 .usecase-item {
   grid-column: 1;
@@ -174,7 +243,9 @@
   line-height: 1.4;
   letter-spacing: -0.02em;
 }
+/* The copy takes the slack so the tags line up across steps. */
 .mission-step p {
+  flex: 1 1 auto;
   margin-top: 14px;
   padding-right: 28px;
   color: var(--muted);
@@ -190,8 +261,15 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
-.mission-link {
-  margin-top: 16px;
+.mission-cta {
+  margin-top: 44px;
+}
+.section-light .button-light {
+  background: #111318;
+  color: #eeebee;
+}
+.section-light .button-light:hover {
+  background: var(--accent);
 }
 
 /* Selected work */
@@ -359,10 +437,10 @@
 /* A single light moment on an otherwise dark page. Removing the section-light class and
    the two DitherEdge elements returns it to dark without touching anything else. */
 .section-light {
-  --paper: #eeebee;
+  --paper: #d6d4d9;
   --ink: #111318;
   --muted: #555a65;
-  --line: #cfced4;
+  --line: #b8b6be;
   --accent: #8a4f7d;
   --accent-soft: #7c4570;
   --accent-muted: #a77f9f;
@@ -372,7 +450,7 @@
 }
 .dither-edge {
   display: block;
-  fill: #eeebee;
+  fill: #d6d4d9;
 }
 /* The 1px overlaps hide sub-pixel seams, since section heights are often fractional. */
 .dither-edge {

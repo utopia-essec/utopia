@@ -44,7 +44,7 @@ export default function App() {
   const detail = slug ? getEvent(category as EventCategory, slug) : undefined
   useEffect(() => {
     const elements = document.querySelectorAll(
-      '.section-heading, .about > div, .activity-card, .wwd-card, .wwd-panels, .number-cell, .highlights-grid > a, .join-section, .usecase-explorer, .mission-steps, .case-row, .consulting-who',
+      '.logo-list, .school-list, .section-heading, .about > div, .activity-card, .wwd-card, .wwd-panels, .number-cell, .highlights-grid > a, .join-section, .usecase-explorer, .mission-steps, .case-row, .consulting-who',
     )
     const observer = new IntersectionObserver(
       (entries) => {
