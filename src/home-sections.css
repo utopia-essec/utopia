@@ -1,0 +1,200 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Utopia in numbers ---------- */
+
+.numbers-section {
+  border-top: 1px solid var(--line);
+}
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid #30343d;
+}
+.number-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px 24px 8px 0;
+}
+.number-cell + .number-cell {
+  padding-left: 24px;
+  border-left: 1px solid #30343d;
+}
+.number-cell dt {
+  order: 2;
+  font-size: 14px;
+  color: var(--ink);
+}
+.number-cell dd {
+  display: contents;
+}
+.stat-value {
+  order: 1;
+  font-family: 'Unbounded Variable', sans-serif;
+  font-size: clamp(38px, 4.3vw, 62px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.stat-suffix {
+  margin-left: 0.08em;
+  font-size: 0.5em;
+  vertical-align: 0.72em;
+  letter-spacing: 0;
+  color: var(--accent-soft);
+}
+.stat-detail {
+  order: 3;
+  margin-top: -12px;
+  font-family: var(--technical-font);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #7d8391;
+}
+
+/* ---------- People we've hosted ---------- */
+
+.people-section {
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+.people-rows {
+  display: grid;
+  gap: 18px;
+  margin-inline: calc(-5.2vw);
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+.people-row {
+  overflow: hidden;
+}
+.people-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  padding-right: 18px;
+  animation: people-scroll 90s linear infinite;
+}
+.people-row--reverse .people-track {
+  animation-direction: reverse;
+}
+.people-row:hover .people-track,
+.people-row:focus-within .people-track {
+  animation-play-state: paused;
+}
+.guest {
+  display: flex;
+  flex-direction: column;
+  width: 168px;
+  color: inherit;
+  text-decoration: none;
+}
+.guest img {
+  display: block;
+  width: 168px;
+  height: 196px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  background: #15181e;
+  filter: grayscale(1) contrast(1.05) brightness(0.8);
+  transition:
+    filter 0.35s cubic-bezier(0.2, 0, 0, 1),
+    transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+.guest:hover img,
+.guest:focus-visible img {
+  filter: none;
+  transform: translateY(-4px);
+}
+.guest-name {
+  font-size: 13px;
+  font-weight: 500;
+}
+.guest-title {
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.guest:hover .guest-name {
+  color: var(--accent-soft);
+}
+.people-link {
+  margin-top: 36px;
+}
+@keyframes people-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1000px) {
+  .numbers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .number-cell:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .number-cell:nth-child(n + 3) {
+    border-top: 1px solid #30343d;
+    margin-top: 16px;
+  }
+}
+@media (max-width: 700px) {
+  .number-cell {
+    padding: 18px 12px 8px 0;
+    gap: 14px;
+  }
+  .number-cell + .number-cell {
+    padding-left: 12px;
+  }
+  .number-cell:nth-child(3) {
+    padding-left: 0;
+  }
+  .stat-value {
+    font-size: 33px;
+  }
+  .number-cell dt {
+    font-size: 13px;
+  }
+  .people-rows {
+    margin-inline: -6vw;
+  }
+  .guest,
+  .guest img {
+    width: 132px;
+  }
+  .guest img {
+    height: 156px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .people-row {
+    overflow-x: auto;
+  }
+  .people-track {
+    animation: none;
+  }
+  .guest[aria-hidden='true'] {
+    display: none;
+  }
+  .guest img {
+    transition: none;
+  }
+}

@@ -1,0 +1,419 @@
+/* Widening the scene to the right moves the statue clear of the title. */
+.consulting-page .ascii-scene {
+  right: -25%;
+}
+.consulting-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 30px;
+}
+
+/* What we do: the home activity cards, on three columns and without a link affordance. */
+.consulting-values .activity-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.consulting-values .activity-card::after {
+  content: none;
+}
+
+/* Use cases: rows on the left, the open panel spanning all of them on the right.
+   The panel follows its row in the DOM, so stacking on mobile needs no extra markup. */
+.usecase-explorer {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.6fr);
+  grid-template-rows: repeat(6, auto);
+  border: 1px solid #30343d;
+}
+.usecase-item {
+  grid-column: 1;
+  border-bottom: 1px solid #30343d;
+}
+.usecase-item:last-of-type {
+  border-bottom: 0;
+}
+.usecase-item button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 76px;
+  padding: 16px 24px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  text-align: left;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.usecase-item button::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s ease;
+}
+.usecase-item button:hover {
+  background: #15171d;
+  color: var(--ink);
+}
+.usecase-item button[aria-expanded='true'] {
+  background: #15171d;
+  color: var(--ink);
+}
+.usecase-item button[aria-expanded='true']::before {
+  transform: scaleY(var(--progress, 1));
+}
+.usecase-item button:focus-visible {
+  outline-offset: -3px;
+}
+.usecase-category {
+  font: 10px var(--technical-font);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.usecase-item button[aria-expanded='true'] .usecase-category {
+  color: var(--accent-soft);
+}
+.usecase-title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+.usecase-panel {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-left: 1px solid #30343d;
+  animation: usecase-enter 0.35s ease-out;
+}
+.usecase-stage {
+  display: flex;
+  flex: 1 1 0px;
+  min-height: 0;
+  container: usecase / inline-size;
+  border-bottom: 1px solid #30343d;
+}
+.usecase-panel > p {
+  /* Reserves two lines so rows on the left don't shift between use cases. */
+  min-height: calc(2 * 1.7em + 44px);
+  padding: 22px 24px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+@keyframes usecase-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Mission: a pixel signal travels through the steps once, when the list scrolls in. */
+.mission-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mission-step {
+  --delay: 0s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.mission-step:nth-child(2) {
+  --delay: 0.5s;
+}
+.mission-step:nth-child(3) {
+  --delay: 1s;
+}
+.mission-step:nth-child(4) {
+  --delay: 1.5s;
+}
+.mission-number {
+  color: var(--accent);
+  font: 12px var(--technical-font);
+  transition: color 0.3s var(--delay);
+}
+.mission-track {
+  display: block;
+  align-self: stretch;
+  height: 4px;
+  margin: 14px 0 26px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent) 0 4px,
+    transparent 4px 9px
+  );
+  transition: clip-path 0.5s steps(16) var(--delay);
+}
+.mission-steps.reveal:not(.is-visible) .mission-track {
+  clip-path: inset(0 100% 0 0);
+}
+.mission-steps.reveal:not(.is-visible) .mission-number {
+  color: var(--line);
+}
+.mission-step h3 {
+  padding-right: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+.mission-step p {
+  margin-top: 14px;
+  padding-right: 28px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.mission-tag {
+  margin-top: 18px;
+  padding: 3px 7px;
+  border: 1px solid var(--accent-muted);
+  color: var(--accent-soft);
+  font: 10px var(--technical-font);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.mission-link {
+  margin-top: 16px;
+}
+
+/* Selected work */
+.case-list {
+  border-top: 1px solid var(--line);
+}
+.case-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  align-items: center;
+  gap: 40px;
+  padding-block: 30px;
+  border-bottom: 1px solid var(--line);
+}
+.redacted-name {
+  display: block;
+  width: min(100%, 210px);
+  height: auto;
+  color: var(--accent);
+  fill: currentColor;
+  transition: color 0.3s;
+}
+.case-row:hover .redacted-name {
+  color: #fff0fb;
+}
+.case-row h3 {
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.case-row ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Who we are */
+.consulting-who {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(40px, 7vw, 110px);
+  padding-top: 0;
+}
+.consulting-who p {
+  max-width: 520px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.75;
+}
+.consulting-who .detail-facts {
+  margin-top: 0;
+}
+.consulting-who .detail-facts dd {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .consulting-values .activity-card {
+    border-bottom: 0;
+  }
+  .consulting-values .activity-card:nth-child(2) {
+    border-right: 1px solid #30343d;
+  }
+}
+@media (max-width: 900px) {
+  /* The signal now runs down the left edge instead of across the top. */
+  .mission-steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .mission-step {
+    position: relative;
+    padding: 0 0 34px 44px;
+  }
+  .mission-step:last-child {
+    padding-bottom: 0;
+  }
+  .mission-number {
+    position: absolute;
+    top: 3px;
+    left: 0;
+  }
+  .mission-track {
+    position: absolute;
+    top: 26px;
+    bottom: 6px;
+    left: 5px;
+    width: 4px;
+    height: auto;
+    margin: 0;
+    background: repeating-linear-gradient(
+      180deg,
+      var(--accent) 0 4px,
+      transparent 4px 9px
+    );
+  }
+  .mission-steps.reveal:not(.is-visible) .mission-track {
+    clip-path: inset(0 0 100% 0);
+  }
+  .mission-step h3,
+  .mission-step p {
+    padding-right: 0;
+  }
+}
+@media (max-width: 800px) {
+  .usecase-explorer {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    border-bottom: 0;
+  }
+  .usecase-item,
+  .usecase-item:last-of-type {
+    grid-column: auto;
+    border-bottom: 1px solid #30343d;
+  }
+  .usecase-item button {
+    padding-inline: 18px;
+  }
+  .usecase-panel {
+    grid-column: auto;
+    grid-row: auto;
+    border-left: 0;
+    border-bottom: 1px solid #30343d;
+  }
+  /* The statue sits behind the text here, so it steps back for legibility. */
+  .consulting-page .ascii-scene {
+    right: 0;
+  }
+  .consulting-page .ascii-canvas {
+    opacity: 0.55;
+  }
+  .usecase-stage {
+    flex: none;
+  }
+  .usecase-panel > p {
+    min-height: 0;
+    padding: 18px;
+    font-size: 14px;
+  }
+  .consulting-who {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+@media (max-width: 700px) {
+  .consulting-values .activity-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .case-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding-block: 26px;
+  }
+}
+
+/* A single light moment on an otherwise dark page. Removing the section-light class and
+   the two DitherEdge elements returns it to dark without touching anything else. */
+.section-light {
+  --paper: #eeebee;
+  --ink: #111318;
+  --muted: #555a65;
+  --line: #cfced4;
+  --accent: #8a4f7d;
+  --accent-soft: #7c4570;
+  --accent-muted: #a77f9f;
+  --orange: #8a4f7d;
+  background: var(--paper);
+  color: var(--ink);
+}
+.dither-edge {
+  display: block;
+  fill: #eeebee;
+}
+/* The 1px overlaps hide sub-pixel seams, since section heights are often fractional. */
+.dither-edge {
+  position: relative;
+  margin-bottom: -1px;
+}
+.dither-edge-flip {
+  margin-top: -1px;
+  margin-bottom: 0;
+  transform: scaleY(-1);
+}
+
+/* Closing CTA: the pixel finale takes the right side of the block. */
+.consulting-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  padding-block: 40px;
+}
+.consulting-cta-copy {
+  position: relative;
+  z-index: 1;
+}
+.consulting-cta p {
+  margin-top: 18px;
+  color: #b9bdc9;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.pixel-assembly {
+  display: block;
+  width: 100%;
+  height: clamp(240px, 24vw, 340px);
+}
+@media (max-width: 800px) {
+  .consulting-cta {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 30px;
+  }
+  .pixel-assembly {
+    height: 200px;
+  }
+}

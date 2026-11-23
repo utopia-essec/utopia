@@ -83,6 +83,7 @@ export const people = {
   'emma-pariente': {
     name: 'Emma Pariente',
     title: 'Co-founder & CEO, AI Sisters',
+    linkedin: 'https://www.linkedin.com/in/emma-pariente/',
     photo: '/people/emma-pariente.webp',
   },
   'guillaume-besson': {

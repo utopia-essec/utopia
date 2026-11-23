@@ -1,0 +1,589 @@
+/* Equal cards, each with an isometric scene, plus the shared scene primitives. */
+
+.wwd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: #30343d;
+  border: 1px solid #30343d;
+}
+.wwd-card {
+  --iso-line: #6b7180;
+  --iso-faint: #353a45;
+  --iso-t: #232731;
+  --iso-l: #191c23;
+  --iso-r: #121419;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #101318;
+  scroll-margin-top: 30px;
+  transition: background 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+.wwd-card:hover,
+.wwd-card:focus-within {
+  background: #14171e;
+  --iso-line: #8a90a0;
+  --iso-t: #282d38;
+}
+.wwd-art {
+  position: relative;
+  flex: none;
+  height: 340px;
+  display: block;
+  padding: 32px 28px 24px;
+  overflow: hidden;
+}
+.wwd-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 4px 28px 30px;
+}
+.wwd-card h3 {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0 0 14px;
+}
+.wwd-card p {
+  max-width: 46ch;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.wwd-card .activity-link {
+  margin-top: auto;
+}
+.wwd-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.2, 0, 0, 1);
+}
+.wwd-card:hover::after {
+  transform: scaleX(1);
+}
+
+.wwd-index {
+  font-family: var(--technical-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent-soft);
+  margin-bottom: 44px;
+}
+
+/* ---------- Scene primitives ---------- */
+
+.iso-scene {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.iso-scene polygon,
+.iso-scene line,
+.iso-scene path,
+.iso-scene rect,
+.iso-scene circle {
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.iso-box polygon {
+  stroke: var(--iso-line);
+  stroke-width: 0.75;
+  transition:
+    stroke 0.35s,
+    fill 0.35s;
+}
+.iso-box .iso-t {
+  fill: var(--iso-t);
+}
+.iso-box .iso-l {
+  fill: var(--iso-l);
+}
+.iso-box .iso-r {
+  fill: var(--iso-r);
+}
+.iso-ghost polygon {
+  stroke: var(--iso-faint);
+}
+.iso-ghost .iso-t {
+  fill: #15181e;
+}
+.iso-ghost .iso-l,
+.iso-ghost .iso-r {
+  fill: #101318;
+}
+.iso-dim polygon {
+  stroke: var(--accent-muted);
+}
+.iso-dim .iso-t {
+  fill: #2d2230;
+}
+.iso-dim .iso-l {
+  fill: #221a24;
+}
+.iso-dim .iso-r {
+  fill: #1a141c;
+}
+.iso-accent polygon {
+  stroke: #fbe6f6;
+}
+.iso-accent .iso-t {
+  fill: var(--accent-soft);
+}
+.iso-accent .iso-l {
+  fill: var(--accent);
+}
+.iso-accent .iso-r {
+  fill: var(--accent-muted);
+}
+.iso-floor circle {
+  fill: #3a3f4b;
+}
+.iso-head {
+  fill: #2a2e38;
+  stroke: var(--iso-line);
+  stroke-width: 0.75;
+}
+.iso-head.is-lit {
+  fill: var(--accent-soft);
+  stroke: #fbe6f6;
+}
+.scene-label {
+  font-family: var(--technical-font);
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: #7d8391;
+}
+.scene-label.is-accent {
+  fill: var(--accent-soft);
+}
+.scene-readout {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--technical-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: #aeb4c1;
+}
+.scene-readout-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  animation: readout-blink 1s steps(2, jump-none) infinite;
+}
+
+/* Motion runs only while a scene is in view. */
+.iso-scene * {
+  animation-play-state: paused;
+}
+.iso-scene.is-playing * {
+  animation-play-state: running;
+}
+
+/* ---------- Conferences ---------- */
+
+.screen-frame {
+  fill: #0d0f14;
+  stroke: var(--iso-faint);
+  stroke-width: 0.75;
+}
+.conf-bar {
+  fill: var(--accent-soft);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: conf-bar 1.3s ease-in-out infinite alternate;
+}
+.conf-ripple {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 0.75;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: conf-ripple 3.6s cubic-bezier(0.2, 0, 0, 1) infinite;
+}
+.conf-question {
+  animation: conf-question 5.2s ease-in-out infinite;
+}
+
+/* ---------- Hackathons ---------- */
+
+.hack-block {
+  animation: hack-drop 7.2s cubic-bezier(0.2, 0, 0, 1) infinite both;
+}
+
+/* ---------- Consulting (home) ---------- */
+
+.belt-marks line,
+.doc-lines line,
+.machine-vents line,
+.audit-links path,
+.build-traces path {
+  fill: none;
+  stroke: var(--iso-faint);
+  stroke-width: 0.75;
+}
+.doc-lines line {
+  stroke: var(--iso-line);
+}
+.consult-doc {
+  animation: consult-in 3s linear infinite both;
+}
+.consult-out {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: consult-out 3s cubic-bezier(0.2, 0, 0, 1) infinite both;
+}
+.machine-slot {
+  fill: #07080b;
+  stroke: var(--iso-line);
+  stroke-width: 0.75;
+}
+.machine-led {
+  fill: var(--accent);
+  animation: led 1s steps(2, jump-none) infinite;
+}
+
+/* ---------- Partnerships ---------- */
+
+.campus-column {
+  fill: #2a2e38;
+  stroke: var(--iso-line);
+  stroke-width: 0.75;
+}
+.tower-window {
+  fill: #0d0f14;
+  stroke: #2f333d;
+  stroke-width: 0.6;
+}
+.tower-window.is-lit {
+  fill: var(--accent-soft);
+  stroke: none;
+  animation: window 3.5s ease-in-out infinite;
+}
+.bridge-path {
+  fill: none;
+  stroke: var(--iso-line);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 4;
+}
+.bridge-path.is-faint {
+  stroke: var(--iso-faint);
+}
+.bridge-packet {
+  fill: var(--accent-soft);
+}
+.bridge-packet.is-return {
+  fill: #c9ccd2;
+}
+
+/* ---------- Audit ---------- */
+
+.audit-scanner {
+  animation: audit-scan 5s cubic-bezier(0.45, 0, 0.55, 1) infinite both;
+}
+.scanner-plane {
+  fill: var(--accent);
+  fill-opacity: 0.08;
+}
+.scanner-edge {
+  stroke: var(--accent-soft);
+  stroke-width: 1;
+}
+.audit-hit {
+  animation: audit-hit 5s cubic-bezier(0.2, 0, 0, 1) infinite both;
+}
+
+/* ---------- Build ---------- */
+
+.build-guide {
+  stroke: var(--iso-faint);
+  stroke-width: 0.75;
+  stroke-dasharray: 1.5 3;
+}
+.build-layer--mid {
+  animation: build-mid 6s cubic-bezier(0.65, 0, 0.35, 1) infinite both;
+}
+.build-layer--top {
+  animation: build-top 6s cubic-bezier(0.65, 0, 0.35, 1) infinite both;
+}
+
+/* ---------- Price ---------- */
+
+.price-slab {
+  animation: price-rise 6.5s cubic-bezier(0.2, 0, 0, 1) infinite both;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes readout-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes conf-bar {
+  from {
+    transform: scaleY(0.12);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes conf-ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0.08);
+  }
+  12% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes conf-question {
+  0%,
+  55%,
+  100% {
+    fill: #2a2e38;
+    stroke: var(--iso-line);
+  }
+  62%,
+  85% {
+    fill: var(--accent-soft);
+    stroke: #fbe6f6;
+  }
+}
+@keyframes hack-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-34px);
+  }
+  6% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  86%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+@keyframes consult-in {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(var(--in-x), var(--in-y));
+  }
+}
+@keyframes consult-out {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--out-x), var(--out-y));
+  }
+}
+@keyframes led {
+  50% {
+    fill: #2a2e38;
+  }
+}
+@keyframes window {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+@keyframes audit-scan {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+    transform: translate(var(--scan-x), var(--scan-y));
+  }
+  78%,
+  100% {
+    opacity: 0;
+    transform: translate(var(--scan-x), var(--scan-y));
+  }
+}
+@keyframes audit-hit {
+  0%,
+  42% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50%,
+  88% {
+    opacity: 1;
+    transform: translateY(-7px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+@keyframes build-mid {
+  0%,
+  30% {
+    transform: translateY(-18px);
+  }
+  50%,
+  85% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-18px);
+  }
+}
+@keyframes build-top {
+  0%,
+  30% {
+    transform: translateY(-38px);
+  }
+  50%,
+  85% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-38px);
+  }
+}
+@keyframes price-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  6% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Layout breakpoints ---------- */
+
+.consulting-values .wwd-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.consulting-values .wwd-art {
+  height: 300px;
+}
+.consulting-values .wwd-body {
+  padding-inline: 24px;
+}
+
+@media (max-width: 1000px) {
+  .wwd-art {
+    height: 280px;
+  }
+  .consulting-values .wwd-grid {
+    grid-template-columns: 1fr;
+  }
+  .consulting-values .wwd-card {
+    flex-direction: row;
+    align-items: center;
+  }
+  .consulting-values .wwd-art {
+    order: 2;
+    flex: 1 1 50%;
+    height: 260px;
+  }
+  .consulting-values .wwd-body {
+    flex: 0 0 50%;
+    padding-block: 28px;
+  }
+}
+@media (max-width: 700px) {
+  .wwd-index {
+    margin-bottom: 14px;
+  }
+  .wwd-grid {
+    grid-template-columns: 1fr;
+  }
+  .wwd-card,
+  .consulting-values .wwd-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .wwd-art,
+  .consulting-values .wwd-art {
+    order: 0;
+    flex: none;
+    height: 240px;
+    padding: 20px 16px 8px;
+  }
+  .wwd-body,
+  .consulting-values .wwd-body {
+    flex: none;
+    padding: 12px 20px 26px;
+  }
+  .scene-readout {
+    top: 16px;
+    left: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .iso-scene *,
+  .scene-readout-dot {
+    animation: none !important;
+  }
+  .wwd-card,
+  .wwd-card::after,
+  .iso-box polygon {
+    transition: none;
+  }
+}

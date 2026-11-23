@@ -8,39 +8,16 @@ import EventsPage from './EventsPage'
 import PageMetadata from './PageMetadata'
 import UnaiteNetwork from './UnaiteNetwork'
 import InterwovenLines from './InterwovenLines'
+import WhatWeDo from './WhatWeDo'
+import { PeopleWall, UtopiaNumbers } from './HomeSections'
 import ContactPage from './ContactPage'
+import ConsultingPage from './ConsultingPage'
 import EventPage from './EventPage'
 import { getEvent, type EventCategory } from './events'
 
-const activities = [
-  {
-    number: '01',
-    title: 'Conferences',
-    type: 'CONFERENCES',
-    text: 'Conversations with researchers, founders, and industry leaders on the technologies and decisions shaping AI.',
-  },
-  {
-    number: '02',
-    title: 'Hackathons',
-    type: 'HACKATHONS',
-    text: 'Bring technical and business perspectives together to build and test solutions to real-world challenges.',
-  },
-  {
-    number: '03',
-    title: 'Consulting',
-    type: 'CONSULTING',
-    text: 'Explore AI use cases and develop practical approaches to business challenges with our student community.',
-  },
-  {
-    number: '04',
-    title: 'Partnerships',
-    type: 'PARTNERSHIPS',
-    text: 'Work with Utopia on conferences, hackathons, and initiatives connecting students with the AI ecosystem.',
-  },
-]
-
 const links = [
   ['Conferences', '/conferences'],
+  ['Consulting', '/consulting'],
   ['Hackathons', '/hackathons'],
   ['About', '/#about'],
 ]
@@ -48,13 +25,7 @@ const links = [
 function Logo() {
   return (
     <a href="/" className="wordmark" aria-label="Utopia home">
-      <img
-        className="utopia-logo"
-        src="/utopia-logo.svg"
-        alt="Utopia"
-        width="935"
-        height="205"
-      />
+      Utopia
     </a>
   )
 }
@@ -73,7 +44,7 @@ export default function App() {
   const detail = slug ? getEvent(category as EventCategory, slug) : undefined
   useEffect(() => {
     const elements = document.querySelectorAll(
-      '.section-heading, .about > div, .activity-card, .highlights-grid > a, .join-section',
+      '.section-heading, .about > div, .activity-card, .wwd-card, .wwd-panels, .number-cell, .highlights-grid > a, .join-section, .usecase-explorer, .mission-steps, .case-row, .consulting-who',
     )
     const observer = new IntersectionObserver(
       (entries) => {
@@ -165,6 +136,8 @@ export default function App() {
 
       {path === '/contact' ? (
         <ContactPage />
+      ) : path === '/consulting' ? (
+        <ConsultingPage />
       ) : detail ? (
         <EventPage event={detail} />
       ) : archive ? (
@@ -237,50 +210,10 @@ export default function App() {
             </div>
           </section>
 
-          <section className="activities section" id="activities">
-            <div className="section-heading">
-              <div>
-                <h2>What we do</h2>
-              </div>
-            </div>
-            <div className="activity-grid">
-              {activities.map((activity, index) => {
-                const hasArchive =
-                  activity.type === 'CONFERENCES' ||
-                  activity.type === 'HACKATHONS'
-                return (
-                  <article
-                    className="activity-card"
-                    id={activity.type.toLowerCase()}
-                    key={activity.number}
-                  >
-                    <PixelField
-                      variant={
-                        (['signal', 'grid', 'wave', 'converge'] as const)[index]
-                      }
-                    />
-                    <h3>{activity.title}</h3>
-                    <p>{activity.text}</p>
-                    <a
-                      className="text-link activity-link"
-                      href={
-                        hasArchive
-                          ? `/${activity.type.toLowerCase()}`
-                          : '/contact'
-                      }
-                    >
-                      {hasArchive
-                        ? 'See more'
-                        : activity.type === 'PARTNERSHIPS'
-                          ? 'Partner with us'
-                          : 'Get in touch'}
-                      <ArrowUpRight size={16} />
-                    </a>
-                  </article>
-                )
-              })}
-            </div>
-          </section>
+          <WhatWeDo />
+
+          <UtopiaNumbers />
+          <PeopleWall />
 
           <section className="highlights section" id="highlights">
             <div className="section-heading">
@@ -388,13 +321,6 @@ export default function App() {
               rel="noreferrer"
             >
               LinkedIn <ArrowUpRight size={14} />
-            </a>
-            <a
-              href="https://www.youtube.com/@Utopia-ESSEC"
-              target="_blank"
-              rel="noreferrer"
-            >
-              YouTube <ArrowUpRight size={14} />
             </a>
           </div>
         </div>

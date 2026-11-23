@@ -1,0 +1,171 @@
+/* What we do — expanding panels, each with an isometric scene. */
+
+.wwd-section {
+  position: relative;
+}
+.wwd-panels {
+  --iso-line: #7a8090;
+  --iso-faint: #353a45;
+  --iso-t: #232731;
+  --iso-l: #191c23;
+  --iso-r: #121419;
+}
+.wwd-section h3 {
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+/* ---------- Expanding panels ---------- */
+
+.wwd-panels {
+  display: flex;
+  height: 600px;
+  border: 1px solid #30343d;
+}
+.wwd-panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 28px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #101318;
+  transition:
+    flex-grow 0.7s cubic-bezier(0.65, 0, 0.35, 1),
+    background 0.4s;
+}
+.wwd-panel + .wwd-panel {
+  border-left: 1px solid #30343d;
+}
+.wwd-panel.is-open {
+  flex-grow: 3.1;
+  cursor: auto;
+  background: #0e1015;
+}
+.wwd-panel:not(.is-open):hover {
+  background: #14171e;
+}
+.wwd-panel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+}
+.wwd-panel.is-open::after {
+  transform: scaleX(1);
+}
+.panel-art {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 12px -8px 20px;
+  opacity: 0.45;
+  transition: opacity 0.6s;
+}
+.wwd-panel.is-open .panel-art {
+  opacity: 1;
+}
+.panel-body h3 {
+  font-size: 22px;
+  white-space: nowrap;
+  transition: font-size 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.wwd-panel.is-open .panel-body h3 {
+  font-size: clamp(32px, 3.4vw, 48px);
+}
+.panel-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.3s;
+}
+.panel-reveal > * {
+  min-height: 0;
+}
+.panel-reveal {
+  overflow: hidden;
+}
+.wwd-panel.is-open .panel-reveal {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition:
+    grid-template-rows 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.4s 0.3s;
+}
+.panel-reveal p {
+  width: 40ch;
+  max-width: 100%;
+  margin: 18px 0 22px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.panel-reveal .activity-link {
+  width: max-content;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1000px) {
+  .wwd-panels {
+    flex-direction: column;
+    height: auto;
+  }
+  .wwd-panel,
+  .wwd-panel.is-open {
+    flex: none;
+    cursor: auto;
+  }
+  .wwd-panel + .wwd-panel {
+    border-left: 0;
+    border-top: 1px solid #30343d;
+  }
+  .panel-art,
+  .wwd-panel .panel-art {
+    flex: none;
+    height: 260px;
+    opacity: 1;
+  }
+  .panel-body h3,
+  .wwd-panel.is-open .panel-body h3 {
+    font-size: 32px;
+  }
+  .panel-reveal,
+  .wwd-panel .panel-reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  .wwd-panel::after {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .panel-art,
+  .wwd-panel .panel-art {
+    height: 220px;
+  }
+  .panel-body h3,
+  .wwd-panel.is-open .panel-body h3 {
+    font-size: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wwd-panel,
+  .wwd-panel::after,
+  .panel-art,
+  .panel-body h3,
+  .panel-reveal {
+    transition: none !important;
+  }
+}

@@ -4,8 +4,22 @@ import ContactSignal from './ContactSignal'
 import './contact.css'
 
 const email = 'utopia.essec@gmail.com'
+const topics = [
+  'Partnerships',
+  'Conferences',
+  'Hackathons',
+  'Consulting',
+  'Joining Utopia',
+  'General inquiry',
+]
 
 export default function ContactPage() {
+  // Lets other pages link straight to a topic, e.g. /contact?topic=consulting.
+  const requestedTopic = new URLSearchParams(window.location.search).get(
+    'topic',
+  )
+  const initialTopic =
+    topics.find((topic) => topic.toLowerCase() === requestedTopic) ?? ''
   const [opened, setOpened] = useState(false)
   const [copied, setCopied] = useState(false)
   const [copyError, setCopyError] = useState(false)
@@ -124,16 +138,13 @@ export default function ContactPage() {
           </label>
           <label>
             What would you like to discuss? *
-            <select name="topic" defaultValue="" required>
+            <select name="topic" defaultValue={initialTopic} required>
               <option value="" disabled>
                 Select a topic
               </option>
-              <option>Partnerships</option>
-              <option>Conferences</option>
-              <option>Hackathons</option>
-              <option>Consulting</option>
-              <option>Joining Utopia</option>
-              <option>General inquiry</option>
+              {topics.map((topic) => (
+                <option key={topic}>{topic}</option>
+              ))}
             </select>
           </label>
           <label>

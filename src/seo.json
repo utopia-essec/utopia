@@ -11,6 +11,10 @@
     "title": "Contact Utopia | ESSEC AI Association",
     "description": "Contact Utopia at utopia.essec@gmail.com about AI conferences, hackathons, consulting, partnerships, or joining ESSEC’s AI community."
   },
+  "/consulting": {
+    "title": "AI Consulting for Companies | Utopia ESSEC",
+    "description": "Student consultants from ESSEC × CentraleSupélec who audit your processes and build tailored AI solutions, below market rates."
+  },
   "/hackathons/secure-horizons": {
     "title": "Secure Horizons — AI & Cybersecurity Hackathon | Utopia ESSEC",
     "description": "A 36-hour AI and cybersecurity hackathon at ESSEC Cergy on 10–11 October 2026, organized by Utopia, Kryptosphère, and ESSEC Metalab."

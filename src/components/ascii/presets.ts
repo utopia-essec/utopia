@@ -67,3 +67,9 @@ export const hackathonDither: AsciiPreset = {
   ...ditherWave,
   brightness: 17,
 }
+
+export const consultingDither: AsciiPreset = {
+  ...ditherWave,
+  brightness: 20,
+  saturation: 60,
+}
