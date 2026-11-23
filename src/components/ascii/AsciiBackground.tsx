@@ -34,7 +34,6 @@ export default function AsciiBackground({
     const layer = document.createElement('canvas')
     const paint = layer.getContext('2d')
     if (!sample || !paint) return
-    setReady(false)
     setFailed(false)
     const image = new Image()
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -278,14 +277,17 @@ export default function AsciiBackground({
     <>
       <div className="ascii-scene" aria-hidden="true">
         <img
-          className={`ascii-fallback ${ready && !failed ? 'is-rendered' : ''}`}
+          className={`ascii-fallback ${failed ? 'is-visible' : ''}`}
           style={{
             filter: `saturate(${recipe.saturation}%)`,
           }}
           src={src}
           alt=""
         />
-        <canvas ref={canvasRef} className="ascii-canvas" />
+        <canvas
+          ref={canvasRef}
+          className={`ascii-canvas ${ready ? 'is-ready' : ''}`}
+        />
       </div>
       {showMotionControl && !failed && !reduced && (
         <button
