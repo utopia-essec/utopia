@@ -12,7 +12,6 @@ const firstNumber = (value?: string) => {
   const match = value?.replace(/[,\s]/g, '').match(/\d+/)
   return match ? Number(match[0]) : 0
 }
-const conferences = events.filter((event) => event.category === 'conferences')
 const hackathons = events.filter((event) => event.category === 'hackathons')
 const attendance = events.reduce(
   (sum, event) =>
@@ -44,7 +43,7 @@ const stats = [
     // A few past events are not in the archive yet.
     suffix: '+',
     label: 'Events organised',
-    detail: `${conferences.length} conferences · ${hackathons.length} hackathons`,
+    detail: 'In Paris',
   },
   {
     value: roundDown(attendance, 100),

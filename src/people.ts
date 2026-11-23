@@ -32,6 +32,11 @@ export const people = {
     photo: '/people/xavier-fischer.webp',
     linkedin: 'https://www.linkedin.com/in/xfischer',
   },
+  'nicolas-dessaigne': {
+    name: 'Nicolas Dessaigne',
+    title: 'Partner, Y Combinator',
+    linkedin: 'https://www.linkedin.com/in/nicolasdessaigne',
+  },
   // Conference speakers; titles are as of their event.
   'william-el-sayed': {
     name: 'William El Sayed',

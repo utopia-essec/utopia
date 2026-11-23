@@ -125,6 +125,7 @@ export const events: ClubEvent[] = [
         detail: 'A day at Qube Research & Technologies.',
       },
     ],
+    people: [{ id: 'nicolas-dessaigne', roles: ['judge'] }],
     description:
       '27–28 June in Paris. A 36-hour hackathon organized by Unaite with Y Combinator as a partner, featuring tracks in software for agents, robotics, and startup building.',
   },
