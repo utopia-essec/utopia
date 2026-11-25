@@ -33,7 +33,7 @@ const hackHours = hackathons.reduce(
 const guests = Object.keys(people).length
 // The archive only lists some prize pools; the club's own count across all
 // hackathons is at least this. Raise it when the real total is confirmed.
-const PRIZE_FLOOR = 30000
+const PRIZE_FLOOR = 35000
 const roundDown = (value: number, step: number) =>
   Math.floor(value / step) * step
 

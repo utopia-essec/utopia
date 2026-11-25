@@ -820,7 +820,7 @@ export const events: ClubEvent[] = [
     stats: {
       duration: '48 hours',
       participants: '100',
-      prizePool: '4,050 €',
+      prizePool: '€4,050 in cash',
       tracks: '3',
     },
     credits: [

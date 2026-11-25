@@ -35,6 +35,7 @@ export const people = {
   'nicolas-dessaigne': {
     name: 'Nicolas Dessaigne',
     title: 'Partner, Y Combinator',
+    photo: '/people/nicolas-dessaigne.webp',
     linkedin: 'https://www.linkedin.com/in/nicolasdessaigne',
   },
   // Conference speakers; titles are as of their event.
