@@ -384,24 +384,34 @@
   }
 }
 @media (max-width: 800px) {
+  /* All six use cases stay stacked as slim rows, with the open panel under
+     the whole list, so switching never means scrolling past a panel. */
   .usecase-explorer {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
-    border-bottom: 0;
   }
   .usecase-item,
   .usecase-item:last-of-type {
     grid-column: auto;
     border-bottom: 1px solid #30343d;
   }
+  /* Title first, category to the right, on a single line. */
   .usecase-item button {
-    padding-inline: 18px;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 46px;
+    padding: 10px 16px;
+  }
+  .usecase-category {
+    flex: none;
   }
   .usecase-panel {
-    grid-column: auto;
+    order: 1;
+    grid-column: 1 / -1;
     grid-row: auto;
     border-left: 0;
-    border-bottom: 1px solid #30343d;
   }
   /* The statue sits behind the text here, so it steps back for legibility. */
   .consulting-page .ascii-scene {
